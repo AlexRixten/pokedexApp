@@ -9,6 +9,9 @@ import {
     StyleSheet,
 } from 'react-native';
 export const PokemonCard = ({ i }) => {
+    const [active, setActive] = useState(false)
+    const [favourite, setFavourite] = useState(false)
+
     const { item } = i
     const [color, setColor] = useState('')
 
@@ -20,21 +23,19 @@ export const PokemonCard = ({ i }) => {
             });
     }, [])
 
-    console.log(color)
-
     const pokemonId = item.id
     const navigation = useNavigation();
     const number = item.id < 10 ? `00${item.id}` : (item.id > 9 && item.id < 100) ? `0${item.id}` : `${item.id}`
     return (
-        <TouchableOpacity style={[styles.pokemonContainer, { backgroundColor: color }]} onPress={() => navigation.navigate('PokemonItem', { pokemonId, item })}>
-            <View style={{ width: 240 }}>
+        <TouchableOpacity style={[styles.pokemonContainer, { backgroundColor: color }]} onPress={() => navigation.navigate('PokemonItem', { pokemonId, item, active, favourite })}>
+            <View style={{ width: 240, color: '#272727' }}>
                 <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{ fontSize: 23, alignSelf: 'center', marginTop: 10 }}>
+                    <Text style={{ fontSize: 23, alignSelf: 'center', marginTop: 10,color: '#272727' }}>
                         {`#${number} ${item.name.charAt(0).toUpperCase() + item.name.slice(1)}`}
                     </Text>
                     <View style={{ flexDirection: 'row' }}>
-                        <TouchableOpacity><Text style={{ marginRight: 10, fontSize: 20 }}>☆</Text></TouchableOpacity>
-                        <TouchableOpacity><Text style={{ fontSize: 20 }}>◯</Text></TouchableOpacity>
+                        <TouchableOpacity onPress={() => setActive(!active)}><Text style={{ marginRight: 10, fontSize: 24, color: '#272727' }}>{active ? '★' : '☆'}</Text></TouchableOpacity>
+                        <TouchableOpacity onPress={() => setFavourite(!favourite)}><Text style={{ fontSize: 26, color: '#272727' }}>{favourite ? '●' : '○'}</Text></TouchableOpacity>
                     </View>
                 </View>
                 <View style={{ flexDirection: 'row', marginTop: 10 }}>
@@ -48,7 +49,6 @@ export const PokemonCard = ({ i }) => {
                 }}
                 resizeMode='contain'
             />
-
         </TouchableOpacity>
     )
 }
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingHorizontal: 25,
         backgroundColor: '#8ca38aab',
-        height: 90,
+        height: 100,
         borderRadius: 20
     },
     pokemonsTypes: {
@@ -76,9 +76,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderWidth: 1,
         borderRadius: 10,
-        height: 30
+        height: 30,
+        borderColor: '#272727'
     },
     pokemonsTypesTxt: {
         textAlign: 'center',
+        color: '#272727'
     },
 });

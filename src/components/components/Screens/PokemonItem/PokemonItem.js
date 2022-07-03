@@ -13,7 +13,7 @@ import * as Progress from 'react-native-progress';
 import { styles } from '../style';
 
 export const PokemonItem = ({ route }) => {
-    const { pokemonId, item } = route.params;
+    const { pokemonId, item, active, favourite } = route.params;
     const number = item.id < 10 ? `00${item.id}` : (item.id > 9 && item.id < 100) ? `0${item.id}` : `${item.id}`
     let totalNumber = 0
     const [index, setIndex] = useState(0);
@@ -42,12 +42,12 @@ export const PokemonItem = ({ route }) => {
             <View style={{ marginTop: 10, marginHorizontal: 5, borderRadius: 20, flexDirection: 'row', paddingHorizontal: 25, alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#8ca38aab', }}>
                 <View>
                     <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center' }}>
-                        <Text style={{ fontSize: 23, alignSelf: 'center', marginTop: 10 }}>
+                        <Text style={{color: '#272727', fontSize: 23, alignSelf: 'center', marginTop: 10 }}>
                             {`#${number} ${item.name.charAt(0).toUpperCase() + item.name.slice(1)}`}
                         </Text>
                         <View style={{ flexDirection: 'row' }}>
-                            <TouchableOpacity><Text style={{ marginRight: 10, fontSize: 20 }}>☆</Text></TouchableOpacity>
-                            <TouchableOpacity><Text style={{ fontSize: 20 }}>◯</Text></TouchableOpacity>
+                            <Text style={{ marginRight: 10, fontSize: 24, color: '#272727' }}>{active ? '★' : '☆'}</Text>
+                            <Text style={{ fontSize: 26, color: '#272727' }}>{favourite ? '●' : '○'}</Text>
                         </View>
                     </View>
                     <View style={{ flexDirection: 'row', marginTop: 10 }}>
@@ -64,7 +64,7 @@ export const PokemonItem = ({ route }) => {
             </View>
             <ScrollView style={{ marginHorizontal: 5 }}>
                 <View>
-                    <Text style={{ textAlign: 'center', marginVertical: 10, fontSize: 20 }}>Species</Text>
+                    <Text style={{ textAlign: 'center', marginVertical: 10, fontSize: 20, color: '#272727' }}>Species</Text>
                     <View style={{ backgroundColor: '#fff', borderRadius: 20, padding: 20 }}>
                         <View style={{ padding: 10, borderWidth: 1, borderRadius: 10, borderColor: 'gray' }}>
                             <Text style={{}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere commodi dicta qui illo, nulla consectetur quaerat saepe quibusdam reprehenderit, harum placeat sapiente at magnam amet minima deleniti rem dignissimos nisi.</Text>
@@ -86,7 +86,7 @@ export const PokemonItem = ({ route }) => {
                     </View>
                 </View>
                 <View>
-                    <Text style={{ textAlign: 'center', marginVertical: 10, fontSize: 20 }}>Abilities</Text>
+                    <Text style={{ textAlign: 'center', marginVertical: 10, fontSize: 20, color: '#272727' }}>Abilities</Text>
                     <View style={{ backgroundColor: '#fff', borderRadius: 20, paddingTop: 10, paddingBottom: 20, paddingHorizontal: 20 }}>
                         {item.abilities.map(obj =>
                             <TouchableOpacity key={obj.slot} style={[styles.pokemonsTypes, !obj.is_hidden ? { backgroundColor: 'gray', marginTop: 10 } : { marginTop: 10 }]} >
@@ -102,7 +102,7 @@ export const PokemonItem = ({ route }) => {
                     </View>
                 </View>
                 <View >
-                    <Text style={{ textAlign: 'center', marginVertical: 10, fontSize: 20 }}>Base Stats</Text>
+                    <Text style={{ textAlign: 'center', marginVertical: 10, fontSize: 20, color: '#272727' }}>Base Stats</Text>
                     <View style={{ backgroundColor: '#fff', paddingVertical: 10, paddingLeft: 10, borderRadius: 20, height: 280 }}>
                         <Tab
                             value={index}
@@ -110,19 +110,19 @@ export const PokemonItem = ({ route }) => {
                         >
                             <Tab.Item
                                 title="Base stats"
-                                titleStyle={{ fontSize: 12, color: '#000' }}
+                                titleStyle={{ fontSize: 12, color: '#272727' }}
                                 containerStyle={{ backgroundColor: 'darkgray', borderRadius: 20, marginRight: 5, height: 45 }}
                                 buttonStyle={(active) => active ? { backgroundColor: 'gray', } : ''}
                             />
                             <Tab.Item
                                 title="Min"
-                                titleStyle={{ fontSize: 12, color: '#000' }}
+                                titleStyle={{ fontSize: 12, color: '#272727' }}
                                 containerStyle={{ backgroundColor: 'darkgray', borderRadius: 20, marginRight: 5, height: 45 }}
                                 buttonStyle={(active) => active ? { backgroundColor: 'gray' } : {}}
                             />
                             <Tab.Item
                                 title="Max"
-                                titleStyle={{ fontSize: 12, color: '#000' }}
+                                titleStyle={{ fontSize: 12, color: '#272727' }}
                                 containerStyle={{ backgroundColor: 'darkgray', borderRadius: 20, height: 45, marginRight: 10 }}
                                 buttonStyle={(active) => active ? { backgroundColor: 'gray' } : ''}
                             />
@@ -134,9 +134,9 @@ export const PokemonItem = ({ route }) => {
                                     {item.stats?.map((obj, index) => {
                                         totalNumber += obj.base_stat
                                         return (<View key={index} style={{ flexDirection: 'row', marginBottom: 10 }}>
-                                            <Text style={{ width: 100, backgroundColor: 'gray', textAlign: 'center' }}>{obj.stat.name.length > 12 ? obj.stat.name.split('-')[0] = 'Sp. ' + obj.stat.name.split('-')[1] : obj.stat.name.charAt(0).toUpperCase() + obj.stat.name.slice(1)}</Text>
+                                            <Text style={{ width: 100, backgroundColor: 'gray', textAlign: 'center', color: '#272727' }}>{obj.stat.name.length > 12 ? obj.stat.name.split('-')[0] = 'Sp. ' + obj.stat.name.split('-')[1] : obj.stat.name.charAt(0).toUpperCase() + obj.stat.name.slice(1)}</Text>
                                             <Progress.Bar animated={true} color={'darkgray'} progress={`0.${obj.base_stat}`} width={200} height={20} borderWidth={0} borderRadius={0} />
-                                            <Text>{obj.base_stat}</Text>
+                                            <Text style={{color: '#272727'}}>{obj.base_stat}</Text>
                                         </View>
                                         )
                                     })}

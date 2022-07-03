@@ -27,5 +27,6 @@ export const styles = StyleSheet.create({
     },
     pokemonsTypesTxt: {
         textAlign: 'center',
+        color: '#272727',
     },
 });

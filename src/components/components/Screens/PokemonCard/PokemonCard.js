@@ -30,7 +30,7 @@ export const PokemonCard = ({ i }) => {
         <TouchableOpacity style={[styles.pokemonContainer, { backgroundColor: color }]} onPress={() => navigation.navigate('PokemonItem', { pokemonId, item, active, favourite })}>
             <View style={{ width: 240, color: '#272727' }}>
                 <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{ fontSize: 23, alignSelf: 'center', marginTop: 10,color: '#272727' }}>
+                    <Text style={{ fontSize: 23, alignSelf: 'center', marginTop: 10, color: '#272727' }}>
                         {`#${number} ${item.name.charAt(0).toUpperCase() + item.name.slice(1)}`}
                     </Text>
                     <View style={{ flexDirection: 'row' }}>

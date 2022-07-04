@@ -16,6 +16,7 @@
     "@rneui/base": "^4.0.0-rc.5",
     "@rneui/themed": "^4.0.0-rc.5",
     "axios": "^0.27.2",
+    "babel-eslint": "^10.1.0",
     "react": "18.0.0",
     "react-native": "0.69.1",
     "react-native-progress": "^5.0.0",
@@ -32,7 +33,10 @@
     "metro-react-native-babel-preset": "^0.70.3",
     "react-test-renderer": "18.0.0"
   },
-  "jest": {
-    "preset": "react-native"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   }
 }

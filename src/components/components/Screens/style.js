@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingHorizontal: 25,
         backgroundColor: '#8ca38aab',
-        height: 90,
+        height: 100,
         borderRadius: 20
     },
     pokemonsTypes: {
@@ -23,10 +23,11 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         borderWidth: 1,
         borderRadius: 10,
-        height: 30
+        height: 30,
+        borderColor: '#272727'
     },
     pokemonsTypesTxt: {
         textAlign: 'center',
-        color: '#272727',
+        color: '#272727'
     },
 });

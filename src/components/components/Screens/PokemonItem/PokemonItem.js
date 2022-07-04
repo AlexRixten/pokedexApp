@@ -135,7 +135,7 @@ export const PokemonItem = ({ route }) => {
                                         totalNumber += obj.base_stat
                                         return (<View key={index} style={{ flexDirection: 'row', marginBottom: 10 }}>
                                             <Text style={{ width: 100, backgroundColor: 'gray', textAlign: 'center', color: '#272727' }}>{obj.stat.name.length > 12 ? obj.stat.name.split('-')[0] = 'Sp. ' + obj.stat.name.split('-')[1] : obj.stat.name.charAt(0).toUpperCase() + obj.stat.name.slice(1)}</Text>
-                                            <Progress.Bar animated={true} color={'darkgray'} progress={`0.${obj.base_stat}`} width={200} height={20} borderWidth={0} borderRadius={0} />
+                                            <Progress.Bar animated={false} color={'darkgray'} progress={`0.${obj.base_stat}`} width={200} height={20} borderWidth={0} borderRadius={0} />
                                             <Text style={{color: '#272727'}}>{obj.base_stat}</Text>
                                         </View>
                                         )

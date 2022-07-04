@@ -12,7 +12,9 @@ import {
     TouchableOpacity,
     Button,
 } from 'react-native';
+import { styles } from '../style'
 import { PokemonCard } from '../PokemonCard/PokemonCard';
+import { Header } from '../../../Header/Header';
 
 const PokemonGens = () => {
     const [firstGenPokemonsDetails, setFirstGenPokemonsDetails] = useState([])
@@ -51,46 +53,17 @@ const PokemonGens = () => {
 
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
+            <Header />
             <FlatList
                 data={pokemonsData}
                 renderItem={renderPokemon}
                 onEndReached={loadMoreData}
-                onEndReachedThreshold={0.01}
+                onEndReachedThreshold={0.2}
             />
             <StatusBar style="auto" />
-        </View>
+        </SafeAreaView>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        paddingTop: 40,
-        paddingHorizontal: 5
-    },
-    pokemonContainer: {
-        marginTop: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingHorizontal: 25,
-        backgroundColor: '#8ca38aab',
-        height: 90,
-        borderRadius: 20
-    },
-    pokemonsTypes: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderWidth: 1,
-        borderRadius: 10,
-        height: 30
-    },
-    pokemonsTypesTxt: {
-        textAlign: 'center',
-    },
-});
 
 export default PokemonGens;

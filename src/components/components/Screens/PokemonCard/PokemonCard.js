@@ -8,6 +8,9 @@ import {
     TouchableOpacity,
     StyleSheet,
 } from 'react-native';
+import {styles} from '../style'
+
+
 export const PokemonCard = ({ i }) => {
     const [active, setActive] = useState(false)
     const [favourite, setFavourite] = useState(false)
@@ -52,35 +55,3 @@ export const PokemonCard = ({ i }) => {
         </TouchableOpacity>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        paddingTop: 40,
-        paddingHorizontal: 5
-    },
-    pokemonContainer: {
-        marginTop: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingHorizontal: 25,
-        backgroundColor: '#8ca38aab',
-        height: 100,
-        borderRadius: 20
-    },
-    pokemonsTypes: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderWidth: 1,
-        borderRadius: 10,
-        height: 30,
-        borderColor: '#272727'
-    },
-    pokemonsTypesTxt: {
-        textAlign: 'center',
-        color: '#272727'
-    },
-});
